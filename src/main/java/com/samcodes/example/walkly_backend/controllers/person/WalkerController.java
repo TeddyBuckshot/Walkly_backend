@@ -42,7 +42,7 @@ public class WalkerController {
         toUpdate.setPricePerHour(walker.getPricePerHour());
         toUpdate.setBio(walker.getBio());
         toUpdate.setRating(walker.getRating());
-        toUpdate.setBookings(walker.getBookings());
+//        toUpdate.setBookings(walker.getBookings());
         walkerRepository.save(toUpdate);
         return new ResponseEntity<>(toUpdate, HttpStatus.OK);
     }

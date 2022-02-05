@@ -1,6 +1,7 @@
 package com.samcodes.example.walkly_backend.models.person;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.samcodes.example.walkly_backend.models.Booking;
 import com.samcodes.example.walkly_backend.models.UserBase;
 import com.samcodes.example.walkly_backend.models.animal.Dog;
@@ -19,11 +20,11 @@ public class Owner extends UserBase {
     @Column(name = "rating")
     private int rating;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"owner"})
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"owner"})
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Dog> dogs;
 
@@ -58,12 +59,20 @@ public class Owner extends UserBase {
         return bookings;
     }
 
+    public void addBooking(Booking booking){
+        this.bookings.add(booking);
+    }
+
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
 
     public List<Dog> getDogs() {
         return dogs;
+    }
+
+    public void addDog(Dog dog){
+        this.dogs.add(dog);
     }
 
     public void setDogs(List<Dog> dogs) {

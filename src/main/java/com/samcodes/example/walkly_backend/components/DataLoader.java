@@ -14,6 +14,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class DataLoader implements ApplicationRunner {
     @Autowired
@@ -59,6 +61,14 @@ public class DataLoader implements ApplicationRunner {
         dogRepository.save(dog6);
         Dog dog7 = new Dog("bingo","great dane", dogSize.LARGE, owner4);
         dogRepository.save(dog7);
+
+        owner1.addDog(dog1);
+        owner2.addDog(dog2);
+        owner2.addDog(dog3);
+        owner3.addDog(dog4);
+        owner3.addDog(dog5);
+        owner3.addDog(dog6);
+        owner4.addDog(dog7);
 
         Walker walker1 = new Walker("Terry","terry walks dogs", 12, "dog lover", 5);
         walkerRepository.save(walker1);

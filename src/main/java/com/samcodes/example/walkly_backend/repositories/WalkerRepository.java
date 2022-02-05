@@ -10,6 +10,6 @@ import java.util.List;
 public interface WalkerRepository extends JpaRepository<Walker, Long> {
     List<Walker> findByBookingsId(long id);
     List<Walker> findByRating(int rating);
-    List<Walker> findAllByBookingsDogsId(long id);
+    List<Walker> findAllByBookingsChosenDogsId(long id);
     List<Walker> findByPricePerHour(double price);
 }

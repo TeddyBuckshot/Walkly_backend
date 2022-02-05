@@ -20,8 +20,8 @@ public class Dog extends UserBase {
     @Column(name = "size")
     private dogSize size;
 
-    @ManyToOne
     @JsonIgnoreProperties({"dogs"})
+    @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
     private Owner owner;
 
@@ -72,7 +72,10 @@ public class Dog extends UserBase {
         return bookings;
     }
 
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
+    public void addBooking(Booking booking) {
+        this.bookings.add(booking);
     }
+//    public void setBookings(List<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
 }

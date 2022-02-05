@@ -38,7 +38,7 @@ public class Booking {
     @JoinColumn(name = "walker_id", nullable = false)
     private Walker walker;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"bookings"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
@@ -46,7 +46,7 @@ public class Booking {
             joinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "dog_id", nullable = false, updatable = false)}
     )
-    private List<Dog> dogs;
+    private List<Dog> chosenDogs;
 
     public Booking() {
     }
@@ -57,7 +57,7 @@ public class Booking {
         this.lengthOfWalk = lengthOfWalk;
         this.owner = owner;
         this.walker = walker;
-        this.dogs = new ArrayList<>();
+        this.chosenDogs = new ArrayList<Dog>();
     }
 
     public Long getId() {
@@ -109,10 +109,10 @@ public class Booking {
     }
 
     public List<Dog> getDogs() {
-        return dogs;
+        return chosenDogs;
     }
 
-    public void setDogs(List<Dog> dogs) {
-        this.dogs = dogs;
+    public void setDogs(List<Dog> chosenDogs) {
+        this.chosenDogs = chosenDogs;
     }
 }

@@ -1,9 +1,7 @@
 package com.samcodes.example.walkly_backend.controllers.animal;
 
 import com.samcodes.example.walkly_backend.models.animal.Dog;
-import com.samcodes.example.walkly_backend.models.person.Walker;
 import com.samcodes.example.walkly_backend.repositories.DogRepository;
-import com.samcodes.example.walkly_backend.repositories.WalkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +40,7 @@ public class DogController {
         toUpdate.setBreed(dog.getBreed());
         toUpdate.setSize(dog.getSize());
         toUpdate.setOwner(dog.getOwner());
-        toUpdate.setBookings(dog.getBookings());
+//        toUpdate.setBookings(dog.getBookings());
         dogRepository.save(toUpdate);
         return new ResponseEntity<>(toUpdate, HttpStatus.OK);
     }

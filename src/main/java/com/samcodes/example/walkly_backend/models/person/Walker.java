@@ -24,8 +24,8 @@ public class Walker extends UserBase {
     @Column(name = "rating")
     private int rating;
 
-    @OneToMany(mappedBy = "walker", fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"walkers"})
+    @OneToMany(mappedBy = "walker", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
     public Walker() {
@@ -74,6 +74,10 @@ public class Walker extends UserBase {
 
     public List<Booking> getBookings() {
         return bookings;
+    }
+
+    public void addBooking(Booking booking){
+        this.bookings.add(booking);
     }
 
     public void setBookings(List<Booking> bookings) {

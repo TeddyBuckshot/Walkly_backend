@@ -23,7 +23,7 @@ public class BookingController {
         return new ResponseEntity<>(bookingRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/bookings/{id}")
+    @GetMapping(value="/bookings/{id}")
     public ResponseEntity<Booking> getBooking(@PathVariable Long id){
         return new ResponseEntity(bookingRepository.findById(id), HttpStatus.OK);
     }
@@ -41,7 +41,7 @@ public class BookingController {
         toUpdate.setEndDate(booking.getEndDate());
         toUpdate.setLengthOfWalk(booking.getLengthOfWalk());
         toUpdate.setOwner(booking.getOwner());
-        toUpdate.setDogs(booking.getDogs());
+//        toUpdate.setDogs(booking.getDogs());
         toUpdate.setWalker(booking.getWalker());
         bookingRepository.save(toUpdate);
         return new ResponseEntity<>(toUpdate, HttpStatus.OK);

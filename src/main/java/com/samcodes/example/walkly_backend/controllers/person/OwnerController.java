@@ -39,8 +39,8 @@ public class OwnerController {
         toUpdate.setName(owner.getName());
         toUpdate.setBio(owner.getBio());
         toUpdate.setRating(owner.getRating());
-        toUpdate.setBookings(owner.getBookings());
-        toUpdate.setDogs(owner.getDogs());
+//        toUpdate.setBookings(owner.getBookings());
+//        toUpdate.setDogs(owner.getDogs());
         ownerRepository.save(toUpdate);
         return new ResponseEntity<>(toUpdate, HttpStatus.OK);
     }
