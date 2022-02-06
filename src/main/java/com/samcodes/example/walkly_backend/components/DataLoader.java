@@ -62,14 +62,6 @@ public class DataLoader implements ApplicationRunner {
         Dog dog7 = new Dog("bingo","great dane", dogSize.LARGE, owner4);
         dogRepository.save(dog7);
 
-        owner1.addDog(dog1);
-        owner2.addDog(dog2);
-        owner2.addDog(dog3);
-        owner3.addDog(dog4);
-        owner3.addDog(dog5);
-        owner3.addDog(dog6);
-        owner4.addDog(dog7);
-
         Walker walker1 = new Walker("Terry","terry walks dogs", 12, "dog lover", 5);
         walkerRepository.save(walker1);
         Walker walker2 = new Walker("Louise","Louise loves dogs", 15, "dog lover 2", 4);
@@ -80,6 +72,9 @@ public class DataLoader implements ApplicationRunner {
         walkerRepository.save(walker4);
 
         Booking booking1 = new Booking("01/01/2022","01/03/2022",60,owner1,walker1);
+//        booking1.addDog(dog1);
+//        dog1.addBooking(booking1);
+        //causes recursion
         bookingRepository.save(booking1);
         Booking booking2 = new Booking("02/02/2022","02/04/2022",60,owner2,walker1);
         bookingRepository.save(booking2);
@@ -95,6 +90,5 @@ public class DataLoader implements ApplicationRunner {
         bookingRepository.save(booking7);
         Booking booking8 = new Booking("08/01/2022","08/03/2022",60,owner4,walker4);
         bookingRepository.save(booking8);
-
     }
 }

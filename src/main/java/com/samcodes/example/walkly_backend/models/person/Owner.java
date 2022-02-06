@@ -71,6 +71,15 @@ public class Owner extends UserBase {
         return dogs;
     }
 
+    public Dog getDogsById(long dog_id){
+       for (Dog dog: dogs) {
+           if (dog.getId().equals(dog_id)){
+               return dog;
+           }
+       }
+       return null;
+    }
+
     public void addDog(Dog dog){
         this.dogs.add(dog);
     }

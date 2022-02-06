@@ -21,16 +21,12 @@ public class Dog extends UserBase {
     private dogSize size;
 
     @JsonIgnoreProperties({"dogs"})
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "owner_id", nullable = false)
     private Owner owner;
 
-    @JsonIgnoreProperties({"dogs"})
-    @ManyToMany
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(name = "dogs_bookings",
-            joinColumns = {@JoinColumn(name = "dog_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)})
+    @JsonIgnoreProperties(value = "dogs")
+    @ManyToMany(mappedBy = "chosenDogs")
     private List<Booking> bookings;
 
     public Dog() {

@@ -38,8 +38,8 @@ public class Booking {
     @JoinColumn(name = "walker_id", nullable = false)
     private Walker walker;
 
-    @JsonIgnoreProperties({"bookings"})
     @ManyToMany
+    @JsonIgnoreProperties(value = "bookings")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "dogs_bookings",
@@ -110,6 +110,10 @@ public class Booking {
 
     public List<Dog> getDogs() {
         return chosenDogs;
+    }
+
+    public void addDog(Dog dog){
+        chosenDogs.add(dog);
     }
 
     public void setDogs(List<Dog> chosenDogs) {
